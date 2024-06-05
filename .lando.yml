@@ -1,0 +1,4 @@
+name: front-end-assignment
+recipe: symfony
+config:
+  webroot: public
