@@ -2,9 +2,21 @@
 
 
 
+{# Feel free to tweak the styling! #}
 {% block stylesheets %}
 	<style>
-      {# You may add styles here #}
+	  .log__item--debug {
+		background-color: gray;
+	  }
+	  .log__item--info {
+		background-color: green;
+	  }
+	  .log__item--warning {
+		background-color: orange;
+	  }
+	  .log__item--error {
+		background-color: red;
+	  }
 	</style>
 {% endblock %}
 
@@ -13,8 +25,9 @@
 {% block body %}
 	{% set levels = ['debug', 'info', 'warning', 'error'] %}
 	
+	{# Let's create a dozen log items with varying content #}
 	{% set items = [] %}
-	{% for i in range(1, 20) %}
+	{% for i in range(1, 12) %}
 		{% set level = levels[i % levels|length] %}
 		
 		{% set items = items|merge([{
@@ -28,18 +41,22 @@
 	
 	<h1>Log</h1>
 	
-	<div data-controller="log"> {# This will connect the LogController to this element #}
+	<div data-controller="log"> {# Connect the LogController to this element #}
 		<h2>Filter</h2>
 		<div>
 			{% for level in levels %}
-				<button type="button" value="{{ level }}">{{ level }}</button>
+				<button
+					type="button"
+					value="{{ level }}"
+					data-action="log#filter"
+				>{{ level }}</button>
 			{% endfor %}
 		</div>
 
 		<h2>Items</h2>
 		<ul class="log">
 			{% for item in items %}
-				<li class="log__item" data-level="{{ item.level }}">
+				<li class="log__item log__item--{{ item.level }}">
 					<p class="log__title">{{ item.title }}</p>
 					<p class="log__body">{{ item.body }}</p>
 				</li>
