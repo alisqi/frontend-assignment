@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block stylesheets %}
+	<style>
+      {# You may add styles here #}
+	</style>
+{% endblock %}
+
+
+
+{% block body %}
+	{% set levels = ['debug', 'info', 'warning', 'error'] %}
+	
+	{% set items = [] %}
+	{% for i in range(1, 20) %}
+		{% set level = levels[i % levels|length] %}
+		
+		{% set items = items|merge([{
+			level,
+			title: "Item #{i} [#{level}]",
+			body:  "This is an item of level #{level}"
+		}]) %}
+	{% endfor %}
+	
+	
+	
+	<h1>Log</h1>
+	
+	<div data-controller="log"> {# This will connect the LogController to this element #}
+		<h2>Filter</h2>
+		<div>
+			{% for level in levels %}
+				<button type="button" value="{{ level }}">{{ level }}</button>
+			{% endfor %}
+		</div>
+
+		<h2>Items</h2>
+		<ul class="log">
+			{% for item in items %}
+				<li class="log__item" data-level="{{ item.level }}">
+					<p class="log__title">{{ item.title }}</p>
+					<p class="log__body">{{ item.body }}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
