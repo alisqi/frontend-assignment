@@ -28,11 +28,14 @@ For bonus points, add counts to the buttons so users can see how many items of a
 Feel free to come up with your own ideas on how to improve the log.
 
 # How to run
-To get the stack up and running, install [Lando](https://docs.lando.dev/) and then run `lando start`.
+To get the stack up and running: 
+1. Install Lando on [macOS](https://docs.lando.dev/install/macos.html) or [Windows](https://docs.lando.dev/install/windows.html)
+2. Clone this repo
+3. Inside the repo, run `lando start`
 
 Lando will output four URLs. The most reliable one is the `http://localhost` (*not* `https`) with the random port.
 
 # How to hand in your solution
 Don't publish your code to a public repo and/or send a pull request. Your solution needs to remain private!
 
-You can either send us the code over email or invite this repo's owner to your cloned repo.
+You can either send us the code over email or invite this repo's contributors to your cloned repo.
