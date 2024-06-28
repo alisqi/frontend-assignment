@@ -30,8 +30,9 @@ Feel free to come up with your own ideas on how to improve the log.
 # How to run
 To get the stack up and running: 
 1. Install Lando on [macOS](https://docs.lando.dev/install/macos.html) or [Windows](https://docs.lando.dev/install/windows.html)
-2. Clone this repo
-3. Inside the repo, run `lando start`
+2. [Install the Symfony plugin](https://docs.lando.dev/plugins/symfony/install.html) using `lando plugin-add @lando/symfony`
+3. Clone this repo
+4. Inside the repo, run `lando start`
 
 Lando will output four URLs. The most reliable one is the `http://localhost` (*not* `https`) with the random port.
 
